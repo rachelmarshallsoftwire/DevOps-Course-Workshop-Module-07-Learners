@@ -7,10 +7,9 @@ jobs:
     runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
     steps:
     - uses: actions/checkout@v4 # Adds a step to checkout the repository code
-    - name: Setup dotnet v8.0
+    - name: Setup .NET v8.0
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: '8.0'
-      # You can test your matrix by printing the current dotnet version
-    - name: Display dotnet version
-      run: dotnet --version
+    - name: Build .NET files
+      run: dotnet build
