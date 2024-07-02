@@ -1,12 +1,12 @@
 name: Continuous Integration
-on: push                      # Will make the workflow run every time you push to any branch
+on: push
 
 jobs:
   build:
     name: Build and test
-    runs-on: ubuntu-latest      # Sets the build environment a machine with the latest Ubuntu installed
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4 # Adds a step to checkout the repository code
+    - uses: actions/checkout@v4
     - name: Setup .NET v8.0
       uses: actions/setup-dotnet@v3
       with:
@@ -17,3 +17,7 @@ jobs:
       run: dotnet test
     - name: Install npm packages
       run: cd ./DotnetTemplate.Web && npm i
+    - name: Lint
+      run: cd ./DotnetTemplate.Web && npm run lint
+    - name: Test node files
+      run: cd ./DotnetTemplate.Web && npm t
