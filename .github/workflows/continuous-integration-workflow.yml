@@ -18,9 +18,12 @@ jobs:
       run: dotnet build
     - name: Test .NET
       run: dotnet test
-    - name: Install npm packages
-      run: cd ./DotnetTemplate.Web && npm i
+    - name: Install npm dependencies
+      working-directory: DotnetTemplate.Web
+      run: npm i
     - name: Lint
-      run: cd ./DotnetTemplate.Web && npm run lint
+      working-directory: DotnetTemplate.Web
+      run: npm run lint
     - name: Test node files
-      run: cd ./DotnetTemplate.Web && npm t
+      working-directory: DotnetTemplate.Web
+      run: npm t
